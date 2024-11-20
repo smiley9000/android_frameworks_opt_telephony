@@ -168,6 +168,8 @@ public class MessagingResponse extends IRadioMessagingResponse.Stub {
      * @param smsc Short Message Service Center address on the device
      */
     public void getSmscAddressResponse(RadioResponseInfo responseInfo, String smsc) {
+        if(smsc.contains("\"") || smsc.contains(","))
+            smsc = "";       
         RadioResponse.responseString(RIL.MESSAGING_SERVICE, mRil, responseInfo, smsc);
     }
 
